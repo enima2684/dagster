@@ -1,6 +1,7 @@
 import os
 import time
 from contextlib import contextmanager
+from datetime import datetime
 
 import pytest
 
@@ -170,7 +171,9 @@ def get_external_pipeline_from_grpc_server_repository(pipeline_name):
                 pipeline_name
             )
     finally:
+        print("Waiting for server process " + repr(datetime.now()))
         server_process.wait()
+        print("Waited! " + repr(datetime.now()))
 
 
 @contextmanager
